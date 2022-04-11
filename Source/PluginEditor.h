@@ -14,7 +14,8 @@
 //==============================================================================
 /**
 */
-class BasicGainAudioProcessorEditor  : public juce::AudioProcessorEditor
+class BasicGainAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                       public juce::Slider::Listener
 {
 public:
     BasicGainAudioProcessorEditor (BasicGainAudioProcessor&);
@@ -24,9 +25,10 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
+    void sliderValueChanged(juce::Slider* slider) override;     //need to implement for slider listener as is pure virtual method, need to implement
+
 private:
     juce::Slider mGainSlider;
-
 
     BasicGainAudioProcessor& audioProcessor;
 
